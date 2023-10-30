@@ -17,7 +17,7 @@ int check_cycle(listint_t *list)
 
 	while (track1 != NULL && track2 != NULL && track2->next != NULL)
 	{
-		track1 = track->next;
+		track1 = track1->next;
 		track2 = track2->next->next;
 
 		if (track1 == track2)
