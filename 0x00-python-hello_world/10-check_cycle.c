@@ -13,13 +13,15 @@ int check_cycle(listint_t *list)
 		return (0);
 
 	track1 = list;
-	track2 = list->next;
+	track2 = list;
 
-	while (track2 != NULL)
+	while (track1 != NULL && track2 != NULL && track2->next != NULL)
 	{
+		track1 = track->next;
+		track2 = track2->next->next;
+
 		if (track1 == track2)
 			return (1);
-		track2 = track2->next;
 	}
 	return (0);
 }
