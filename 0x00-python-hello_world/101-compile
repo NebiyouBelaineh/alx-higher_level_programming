@@ -1,8 +1,2 @@
 #!/bin/bash
-echo "Compiling $PYFILE ..."
-python3 -m py_compile $PYFILE
- cd __pycache__/
- mv main.cpython-38.pyc main.pyc
- mv main.pyc ../
- cd ..
- rmdir __pycache__/
+python3 -m compileall -b $PYFILE i
