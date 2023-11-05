@@ -8,38 +8,26 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int index, count = 0, *list_arr;
+	int index, count = 0, list_arr[1000];
 	listint_t *current;
 
 	current = *head;
 
 	if (*head == NULL)
 		return (1);
-	while (current != NULL)
-	{
-		count++;
-		current = current->next;
-	}
-	current = *head;
-
-	list_arr = malloc(sizeof(int) * count);
-
-	for (index = 0; index < count && current != NULL; index++)
+	for (index = 0; current != NULL; index++)
 	{
 		list_arr[index] = current->n;
 		current = current->next;
+		count++;
 	}
 	for (index = 0; index < floor(count / 2); index++)
 	{
 		if (list_arr[index] == list_arr[count - 1 - index])
 			continue;
 		else
-		{
-			free(list_arr);
 			return (0);
-		}
 	}
-	free(list_arr);
 	return (1);
 
 }
