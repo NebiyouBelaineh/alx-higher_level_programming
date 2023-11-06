@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include <Python.h>
-#include <stdlib.h>
 /**
  * print_python_list_info - prints some basic info about Python lists
  * @p: is the Python Object list to be examined
