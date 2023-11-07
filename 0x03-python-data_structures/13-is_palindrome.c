@@ -8,33 +8,48 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int index, count = 0, *list_arr;
-	listint_t *current = *head;
+	listint_t *back, *forward, *s_half, *f_half;
 
-	if (*head == NULL)
+	back = *head;
+	forward = *head;
+
+	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-	while (current != NULL)
+	while (forward != NULL && forward->next != NULL)
 	{
-		count++;
-		current = current->next;
+		back = back->next;
+		forward = forward->next->next;
 	}
-	current = *head;
-	list_arr = malloc(sizeof(int) * count);
-	for (index = 0; index < count && current != NULL; index++)
+	f_half = reverse_list(&back);
+	f_half = *head;
+
+	while (s_half != NULL)
 	{
-		list_arr[index] = current->n;
-		current = current->next;
-	}
-	for (index = 0; index < floor(count / 2); index++)
-	{
-		if (list_arr[index] == list_arr[count - 1 - index])
-			continue;
-		else
-		{
-			free(list_arr);
+		if (f_half->n != s_half->n)
 			return (0);
-		}
+		f_half = f_half->next;
+		s_half = s_half->next;
 	}
-	free(list_arr);
 	return (1);
+}
+/**
+* reverse_list - reverses a singly linked list
+* @head: pointer to the head of the list
+* Return: pointer to the head of the list
+*/
+listint_t *reverse_list(listint_t **head)
+{
+	listint_t *back = NULL;
+	listint_t *current = *head;
+	listint_t *forward = NULL;
+
+	while (current)
+	{
+		forward = current->next;
+		current->next = back;
+		back = current;
+		current = forward;
+	}
+	*head = back;
+	return (*head);
 }
