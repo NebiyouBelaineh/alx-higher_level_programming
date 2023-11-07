@@ -8,37 +8,36 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *back = *head, *forward = *head, *current = *head, *middle = *head;
+	listint_t *back = *head, *current = *head, *middle = *head;
+	int index, count = 0;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
-
-	while (1)
+	while (current != NULL)
 	{
-		forward = forward->next->next;
-		if (forward == NULL)
-		{
-			middle = back->next;
-			break;
-		}
-		if (forward->next == NULL)
-		{
-			middle = back->next->next;
-			break;
-		}
+		count++;
+		current = current->next;
+	}
+	current = *head;
+	for (index = 0; index < (count / 2) - 1; index++)
+		current = current->next;
+	if ((count % 2) == 0 && current->n != current->next->n)
+		return (0);
+
+	current = current->next->next;
+	reverse_list(&current);
+	back = *head;
+	middle = back;
+
+	current = *head;
+	while (back)
+	{
+		if (current->n != back->n)
+			return (0);
+		current = current->next;
+		back = back->next;
 	}
 	reverse_list(&middle);
-
-	while (middle != NULL && current != NULL)
-	{
-		if (middle->n == current->n)
-		{
-			middle = middle->next;
-			current = current->next;
-		}
-		else
-			return (0);
-	}
 	return (1);
 }
 /**
