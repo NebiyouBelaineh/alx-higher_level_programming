@@ -10,8 +10,8 @@ def roman_to_int(roman_string):
     for i in range(len(roman_string)):
         if r_nums.get(roman_string[i], 0) == 0:
             return (0)
-        if i != (len(roman_string) - 1) and r_nums[roman_string[i]]
-        < r_nums[roman_string[i + 1]]:
+        if i != (len(roman_string) - 1) and r_nums[roman_string[i]] <\
+                r_nums[roman_string[i + 1]]:
             dec_num += r_nums[roman_string[i]] * -1
         else:
             dec_num += r_nums[roman_string[i]]
