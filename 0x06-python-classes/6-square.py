@@ -71,14 +71,19 @@ class Square:
 
     @position.setter
     def position(self, value):
-        """Position setter method
+        """Position Setter function
 
         Args:
-            value (tuple): value to set for __position field
+            value (_type_): _description_
+
+        Raises:
+            TypeError: if value is not a tuple and if it's length is not
+            TypeError: if value[0] and value[1] are not integers
+            TypeError: if value contains negative numbers
         """
-        if type(value) is not tuple or len(value) is not 2:
+        if type(value) != tuple and len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if type(value[0]) is not int or type(value[1]) is not int:
+        if type(value[0]) != int and type(value[1]) != int:
             raise TypeError("position must be a tuple of 2 positive integers")
         if value[0] < 0 or value[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
