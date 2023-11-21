@@ -45,6 +45,7 @@ class Square:
 
     def my_print(self):
         """Prints # to stdout if size is > 0, newline if size is 0
+            If __position[1] > 0, then space is not printed
         """
         if self.__size == 0:
             print()
