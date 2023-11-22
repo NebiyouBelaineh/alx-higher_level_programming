@@ -5,8 +5,8 @@
 import math
 
 
-class _MagicClass:
-    """class _MagicClass definition"""
+class MagicClass:
+    """class MagicClass definition"""
 
     def __init__(self, radius=0):
         """Initilizer
@@ -28,7 +28,7 @@ class _MagicClass:
         Returns:
             int/float: returns the area of a circle
         """
-        return 2 ** self.__radius * math.pi
+        return (self.__radius ** 2 * math.pi)
 
     def circumference(self):
         """Calculates Area of a circle
@@ -36,4 +36,4 @@ class _MagicClass:
         Returns:
             int/float: returns the circumference of a circle
         """
-        return 2 * math.pi * self.__radius
+        return (2 * math.pi * self.__radius)
