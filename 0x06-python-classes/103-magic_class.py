@@ -13,13 +13,10 @@ class MagicClass:
 
         Args:
             radius (int/float): radius of the circle
-
-        Raises:
-            TypeError: radius must be a number
         """
         self.__radius = 0
         if type(radius) is not int or type(radius) is not float:
-            raise TypeError('radius must be a number')
+            raise TypeError("radius must be a number")
         self.__radius = radius
 
     def area(self):
