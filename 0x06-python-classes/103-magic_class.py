@@ -25,7 +25,7 @@ class MagicClass:
         Returns:
             int/float: returns the area of a circle
         """
-        return (self.__radius ** 2 * math.pi)
+        return (self.__radius ** 2) * math.pi
 
     def circumference(self):
         """Calculates Area of a circle
