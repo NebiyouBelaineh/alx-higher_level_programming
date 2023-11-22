@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 import math
 
-"""Module that calculates area and circumference"""
-
 
 class _MagicClass:
     """class _MagicClass definition"""
