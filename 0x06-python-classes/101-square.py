@@ -101,3 +101,4 @@ class Square:
         else:
             new_str += '\n'
         return new_str[:-1]
+    
