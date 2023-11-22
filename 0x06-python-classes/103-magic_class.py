@@ -2,10 +2,13 @@
 """Module that calculates area and circumference"""
 
 
+import math
+
+
 class _MagicClass:
     """class _MagicClass definition"""
 
-    def __init__(self, radius):
+    def __init__(self, radius=0):
         """Initilizer
 
         Args:
@@ -14,10 +17,10 @@ class _MagicClass:
         Raises:
             TypeError: radius must be a number
         """
-        self._MagicClass__radius = 0
+        self.__radius = 0
         if type(radius) is not int or type(radius) is not float:
             raise TypeError('radius must be a number')
-        self._MagicClass__radius = radius
+        self.__radius = radius
 
     def area(self):
         """Calculates Area of a circle
@@ -25,7 +28,7 @@ class _MagicClass:
         Returns:
             int/float: returns the area of a circle
         """
-        return 2 ** self._MagicClass__radius * math.pi
+        return 2 ** self.__radius * math.pi
 
     def circumference(self):
         """Calculates Area of a circle
@@ -33,4 +36,4 @@ class _MagicClass:
         Returns:
             int/float: returns the circumference of a circle
         """
-        return 2 * math.pi * self._MagicClass__radius
+        return 2 * math.pi * self.__radius
