@@ -6,8 +6,7 @@ class Square:
     """class Square"""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initilizes Square attributes
-
+        """Initilize attributes of Square
         Args:
             size (int, optional): _description_. Defaults to 0.
             position (tuple, optional): _description_. Defaults to (0, 0).
@@ -49,8 +48,9 @@ class Square:
         """
         if self.__size == 0:
             print()
-        else:
-            for h in range(1, self.__position[1]):
+        elif self.__size > 0:
+            s = 0
+            for h in range(self.__position[1]):
                 print()
             for i in range(self.__size):
                 for j in range(self.__position[0]):
@@ -73,14 +73,14 @@ class Square:
         """Position Setter function
 
         Args:
-            value (_type_): _description_
+            value (tuple): tuple containing position information
 
         Raises:
             TypeError: if value is not a tuple and if it's length is not
             TypeError: if value[0] and value[1] are not integers
             TypeError: if value contains negative numbers
         """
-        
+
         if type(value) is not tuple or len(value) is not 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         if type(value[0]) is not int or type(value[1]) is not int:
