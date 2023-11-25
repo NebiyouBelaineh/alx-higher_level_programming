@@ -19,7 +19,6 @@ Now use it:
         #
         
         >>> print_square(0)
-        <BLANKLINE>
 
         >>> print_square(1.5) # test for float
         Traceback (most recent call last):
@@ -47,6 +46,26 @@ Now use it:
         TypeError: size must be an integer
 
         >>> print_square(float('nan')) # test for float('nan')
+        Traceback (most recent call last):
+        ...
+        TypeError: size must be an integer
+
+        >>> print_square(10)
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+        ##########
+
+        >>> print_square(2.35)
+        ##
+        ##
+        >>> print_square(-2.35)
         Traceback (most recent call last):
         ...
         TypeError: size must be an integer
