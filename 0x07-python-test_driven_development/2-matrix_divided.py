@@ -21,13 +21,12 @@ def matrix_divided(matrix, div):
 
     Raises:
         ZeroDivisionError: raised if div has the value of zero
-        TypeError: _description_
-        TypeError: _description_
-        TypeError: _description_
-        TypeError: _description_
+        TypeError: if div is not a number
+        TypeError: if matrix is not a list of lists of integers/floats
+        TypeError: if matrix has rows of different sizes
 
     Returns:
-        _type_: _description_
+        list: new_list containing the result after division or empty list
     """
     if div == 0:
         raise ZeroDivisionError("division by zero")
