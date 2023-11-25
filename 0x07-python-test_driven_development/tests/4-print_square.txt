@@ -62,9 +62,11 @@ Now use it:
         ##########
         ##########
 
+        ```
+        Questionible test from *Alx Test Suite*
         >>> print_square(2.35)
         ##
-        ##
+        ##```
         >>> print_square(-2.35)
         Traceback (most recent call last):
         ...
