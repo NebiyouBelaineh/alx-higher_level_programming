@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-    Divides all elements of a matrix by div
+"""Divides all elements of a matrix by div
 
     Examples:
         >>> matrix = [
