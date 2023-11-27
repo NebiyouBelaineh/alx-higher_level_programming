@@ -18,6 +18,19 @@ def matrix_mul(m_a, m_b):
         m_a (list): a list of lists containing integers or floats
         m_b (list): a list of lists containing integers or floats
 
+    Raises:
+        TypeError: if m_a is not a list
+        TypeError: if m_b is not a list
+        TypeError: if m_a is not a list of lists
+        TypeError: if m_b is not a list of lists
+        ValueError: if m_a is empty
+        ValueError: if m_b is empty
+        TypeError: if m_a is not a rectangle
+        TypeError: if m_b is not a rectangle
+        ValueError: if m_a and m_b can not be multiplied
+        TypeError: if m_a contains an element not an integer or float
+        TypeError: if m_b contains an element not an integer or float
+
     Returns:
         list: a new list which is the matrix product
     """
