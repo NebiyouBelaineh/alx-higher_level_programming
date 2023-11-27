@@ -115,7 +115,8 @@ class Rectangle:
         return rectangle
 
     def bigger_or_equal(rect_1, rect_2):
-        """Returns rect_1 if it is bigger or equal to rect_2, othewise rect_2 is returned
+        """Returns rect_1 if it is bigger or equal to rect_2,
+        othewise rect_2 is returned
 
         Args:
             rect_1 (Rectangle): rectangle 1 from Rectangle class
