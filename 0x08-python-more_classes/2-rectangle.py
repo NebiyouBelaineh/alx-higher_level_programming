@@ -82,4 +82,6 @@ class Rectangle:
         Returns:
             int: preimeter of a rectangle(sum of all 4 sides)
         """
+        if self.__width == 0 or self.__height == 0:
+            return 0
         return 2 * (self.__width + self.__height)
