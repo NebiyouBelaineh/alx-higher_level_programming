@@ -101,7 +101,8 @@ class Rectangle:
         for c in range(col):
             for r in range(row):
                 rectangle += '#'
-            rectangle += '\n'
+            if c != col - 1:
+                rectangle += '\n'
         return rectangle
 
     def __str__(self):
