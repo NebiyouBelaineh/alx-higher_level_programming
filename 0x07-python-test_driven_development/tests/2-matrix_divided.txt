@@ -11,75 +11,100 @@ First import ``matrix_divided`` from the ``2-matrix_divided`` module:
 
 Now use it:
 
-    # integer input for both div and matrix
-    >>> matrix_divided([[1,2,3], [4,5,6]], 3)
+    Test integer input for both div and matrix
+    
+    >>> matrix_divided([[1,2,3], [4,5,6]], 3) # integer input for both div and matrix
     [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
-    #div is a float number
-    >>> matrix_divided([[0,2,4], [4,6,8]], 2.0)
+    Test div is a float number
+    
+    >>> matrix_divided([[0,2,4], [4,6,8]], 2.0) #div is a float number
     [[0.0, 1.0, 2.0], [2.0, 3.0, 4.0]]
 
-    # matrix with float numbers
-    >>> matrix_divided([[1.0, 1.0, 1.0], [2, 2.0, 2]], 2)
+    Test matrix with float numbers
+    
+    >>> matrix_divided([[1.0, 1.0, 1.0], [2, 2.0, 2]], 2) # matrix with float numbers
     [[0.5, 0.5, 0.5], [1.0, 1.0, 1.0]]
     
-    # different row sizes 
-    >>> matrix_divided([[1, 1, 1], [2, 2, 2, 2]], 2)
+    Test different row sizes 
+    
+    >>> matrix_divided([[1, 1, 1], [2, 2, 2, 2]], 2) # different row sizes 
     Traceback (most recent call last):
         ...
     TypeError: Each row of the matrix must have the same size
 
-    # division by zero (div == 0)
-    >>> matrix_divided([[1, 1, 1], [2, 2, 2]], 0)
+    Test division by zero (div == 0)
+    
+    >>> matrix_divided([[1, 1, 1], [2, 2, 2]], 0) # division by zero (div == 0)
     Traceback (most recent call last):
         ...
     ZeroDivisionError: division by zero
 
-    # div not a number 
-    >>> matrix_divided([[1, 1, 1], [2, 2, 2]], '2')
+    Test div not a number 
+    
+    >>> matrix_divided([[1, 1, 1], [2, 2, 2]], '2') # div not a number 
     Traceback (most recent call last):
         ...
     TypeError: div must be a number
 
-    # matrix filled with none numbers 
-    >>> matrix_divided([['zero', 'one', '1'], [2, 2, 2]], 2)
+    Test matrix filled with none numbers 
+    
+    >>> matrix_divided([['zero', 'one', '1'], [2, 2, 2]], 2) # matrix filled with none numbers 
     Traceback (most recent call last):
         ...
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-    >>> matrix_divided()
+    Test passing no parameters
+    
+    >>> matrix_divided() # Test passing no parameters
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
-    >>> matrix_divided([[1,2,3],[4,5,6]])
+    Test not passing div
+    
+    >>> matrix_divided([[1,2,3],[4,5,6]]) # Test not passing div
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-    >>> matrix_divided([[]])
+    Test passing empty matrix with no div parameter
+    
+    >>> matrix_divided([[]]) #  Test passing empty matrix with no div parameter
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
-    >>> matrix_divided()
+    Test passing no parameters
+
+    >>> matrix_divided() # Test passing no parameters
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 2 required positional arguments: 'matrix' and 'div'
 
-    # Division by a very large number
+    Test Division by a very large number
+
     >>> matrix_divided([[1, 2, 3], [4, 5, 6]], float('inf'))
     [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
-    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], None)
+    Test passing None as div
+    >>> matrix_divided([[1, 2, 3], [4, 5, 6]], None) # Test passing None as div
     Traceback (most recent call last):
         ...
     TypeError: div must be a number
 
+
     >>> matrix_divided([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 3)
     [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0], [2.33, 2.67, 3.0]]
 
-    >>> matrix_divided(None)
+    Test passing None for matrix
+
+    >>> matrix_divided(None) # Test passing None for matrix
     Traceback (most recent call last):
         ...
     TypeError: matrix_divided() missing 1 required positional argument: 'div'
+
+    >>> matrix_divided(None, 1) # Test passing None for matrix
+    Traceback (most recent call last):
+        ...
+    TypeError: 'NoneType' object is not iterable
