@@ -65,10 +65,18 @@ Now use it:
         ```
         Questionible test from *Alx Test Suite*
         >>> print_square(2.35)
-        ##
-        ##```
-        >>> print_square(-2.35)
         Traceback (most recent call last):
         ...
         TypeError: size must be an integer
+
+        >>> print_square(-2.35)
+        Traceback (most recent call last):
+            ...
+        TypeError: size must be an integer
+
+        >>> print_square(-2)
+        Traceback (most recent call last):
+            ...
+        ValueError: size must be >= 0
+
 
