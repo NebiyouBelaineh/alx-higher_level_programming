@@ -17,6 +17,8 @@ class TestMaxInteger(unittest.TestCase):
         # test for large number
         self.assertEqual(max_integer([999999999999, 500222222222222222222000,
                                       322222220]), 500222222222222222222000)
+        # test for single digit
+        self.assertEqual(max_integer([1]), 1)
 
     def testNegative(self):
         """Test for negative numbers in a list
@@ -39,6 +41,8 @@ class TestMaxInteger(unittest.TestCase):
         """
         # test for empty parameter
         self.assertEqual(max_integer(), None)
+        # test for empty list
+        self.assertEqual(max_integer([]), None)
         # test for passing None
         self.assertRaises(TypeError, max_integer, None)
 
