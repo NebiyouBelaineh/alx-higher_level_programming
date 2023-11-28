@@ -9,16 +9,18 @@ import numpy as np
         [[13 16]]
     """
 
-    
+
 def lazy_matrix_mul(m_a, m_b):
     """Returns the product of two matrices
 
     Args:
-        m_a (list): The first matrix containing list of lists of integer or floats
-        m_b (list): The second matrix containing list of lists of integer or floats
+        m_a (list): The first matrix containing list of lists of integer or
+        floats
+        m_b (list): The second matrix containing list of lists of integer or
+        floats
 
     Returns:
-        array: return a NumPy array 
+        array: return a NumPy array
     """
     mat_a = np.array(m_a)
     mat_b = np.array(m_b)
