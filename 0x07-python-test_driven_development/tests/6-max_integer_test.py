@@ -39,6 +39,8 @@ class TestMaxInteger(unittest.TestCase):
         """
         # test for empty parameter
         self.assertEqual(max_integer(), None)
+        # test for passing None
+        self.assertRaises(TypeError, max_integer, None)
 
     def testSameNumbers(self):
         """Test for same numbers in a list
