@@ -54,3 +54,18 @@ Case where value is not an integer
     >>> bg.integer_validator("input_frozenset", frozenset(["hello", "world"]))
     Traceback (most recent call last):
     TypeError: input_frozenset must be an integer
+
+    >>> m = __import__("7-base_geometry").__doc__
+    >>> len(m) > 1
+    True
+
+    >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+    >>> len(c) > 1
+    True
+
+    >>> mod1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> len(mod1) > 1
+	True
+	>>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+    >>> len(mod2) > 1
+    True
