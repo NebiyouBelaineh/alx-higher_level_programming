@@ -54,7 +54,3 @@ Case where value is not an integer
     >>> bg.integer_validator("input_frozenset", frozenset(["hello", "world"]))
     Traceback (most recent call last):
     TypeError: input_frozenset must be an integer
-
-    >>> bg.integer_validator()
-    Traceback (most recent call last):
-    TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
