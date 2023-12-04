@@ -10,68 +10,58 @@ The ```7-base_geometry``` Module
     Traceback (most recent call last):
     TypeError: name must be an integer
     
-Passing string with 0
-    >>> bg.integer_validator("age", 0)
+    >>> bg.integer_validator("age", 0) # Passing string with 0
     Traceback (most recent call last):
     ValueError: age must be greater than 0
 
-Passing string with negative number
-    >>> bg.integer_validator("distance", -4)
+
+    >>> bg.integer_validator("distance", -4) # Passing string with negative number
     Traceback (most recent call last):
     ValueError: distance must be greater than 0
 
-Passing string with float number
-    >>> bg.integer_validator("distance", 5.4)
+
+    >>> bg.integer_validator("distance", 5.4) # Passing string with float number
     Traceback (most recent call last):
     TypeError: distance must be an integer
 
-Checking area() with 1 parameter(self)
-    >>> bg.area()
+
+    >>> bg.area() # Checking area() with 1 parameter(self)
     Traceback (most recent call last):
     Exception: area() is not implemented
 
-Checking area() method with additional parameter
-    >>> bg.area(2)
+    >>> bg.area(2) # Checking area() method with additional parameter
     Traceback (most recent call last):
     TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
     
-Passing string with list to integer_validator
-    >>> bg.integer_validator("Input_list", [1,2,3,4,5])
+    >>> bg.integer_validator("Input_list", [1,2,3,4,5]) # Passing string with list to integer_validator
     Traceback (most recent call last):
     TypeError: Input_list must be an integer
     
-Passing string with string to integer_validator
-    >>> bg.integer_validator("Input_string", "my_dict says Hello World")
+    >>> bg.integer_validator("Input_string", "my_dict says Hello World") # Passing string with string to integer_validator
     Traceback (most recent call last):
     TypeError: Input_string must be an integer
 
-Passing string with tuple to integer_validator
 
-    >>> bg.integer_validator("Input_tuple", ("Great","Scott"))
+    >>> bg.integer_validator("Input_tuple", ("Great","Scott")) # Passing string with tuple to integer_validator
     Traceback (most recent call last):
     TypeError: Input_tuple must be an integer
 
-Passing empty parameters to integer_validator
-
-    >>> bg.integer_validator()
+    >>> bg.integer_validator() # Passing empty parameters to integer_validator
     Traceback (most recent call last):
     TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 
-Checking for module docstring:
-    >>> m = __import__("7-base_geometry").__doc__
+    >>> m = __import__("7-base_geometry").__doc__ # Checking for module docstring
     >>> len(m) > 1
     True
 
-Checking for class docstring:
-    >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+    >>> c = __import__("7-base_geometry").BaseGeometry.__doc__ # Checking for class docstring
     >>> len(c) > 1
     True
 
-Checking for method docstring:
-	>>> mod1 = __import__("7-base_geometry").BaseGeometry.area.__doc__
+	>>> mod1 = __import__("7-base_geometry").BaseGeometry.area.__doc__ # Checking for method docstring:
 	>>> len(mod1) > 1
 	True
-	>>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+	>>> mod2 = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__ # Checking for method docstring
     >>> len(mod2) > 1
     True
