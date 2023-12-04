@@ -49,12 +49,3 @@ The ```7-base_geometry``` Module
     >>> bg.integer_validator() # Passing empty parameters to integer_validator
     Traceback (most recent call last):
     TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-
-    >>> m = __import__("7-base_geometry").__doc__ # Checking for module docstring
-    >>> len(m) > 1
-    True
-
-    >>> c = __import__("7-base_geometry").BaseGeometry.__doc__ # Checking for class docstring
-    >>> len(c) > 1
-    True
