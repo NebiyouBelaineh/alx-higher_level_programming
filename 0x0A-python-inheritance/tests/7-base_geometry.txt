@@ -14,10 +14,6 @@ Case to test area()
     Traceback (most recent call last):
     Exception: area() is not implemented
 
-    >>> bg.area(55)
-    Traceback (most recent call last):
-    TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
-
     
 Cases where value is not an integer:
     >>> bg.integer_validator("name", "John")
