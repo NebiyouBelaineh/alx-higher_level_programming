@@ -3,21 +3,50 @@ The ```7-base_geometry``` Module
 
     >>> BaseGeometry  = __import__('7-base_geometry').BaseGeometry
 
+Normal cases:
+
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
-    >>> try:
-    ...     bg.integer_validator("name", "John")
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-    >>> try:
-    ...     bg.integer_validator("age", 0)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [ValueError] age must be greater than 0
-    >>> try:
-    ...     bg.integer_validator("distance", -4)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [ValueError] distance must be greater than 0
+    
+Case to test area()
+    >>> bg.area()
+    Traceback (most recent call last):
+    Exception: area() is not implemented
+
+    >>> bg.area(55)
+    Traceback (most recent call last):
+    TypeError: BaseGeometry.area() takes 1 positional argument but 2 were given
+
+    
+Cases where value is not an integer:
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+    TypeError: name must be an integer
+
+Cases where value is less than or equal to Zero
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ValueError: age must be greater than 0
+
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+    ValueError: distance must be greater than 0
+
+Case where value is not an integer
+
+    >>> bg.integer_validator("float_number", 5.3)
+    Traceback (most recent call last):
+    TypeError: float_number must be an integer
+
+    >>> bg.integer_validator("input_string", "string")
+    Traceback (most recent call last):
+    TypeError: input_string must be an integer
+
+    >>> bg.integer_validator("input_list", [])
+    Traceback (most recent call last):
+    TypeError: input_list must be an integer
+
+    >>> bg.integer_validator("input_dict", {})
+    Traceback (most recent call last):
+    TypeError: input_dict must be an integer
