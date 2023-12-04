@@ -30,6 +30,7 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
+    """Rectangle is a class that inherits from BaseGeometry"""
     def __init__(self, width, height):
         """Initilizer method for class Rectangle
 
