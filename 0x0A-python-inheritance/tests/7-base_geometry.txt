@@ -46,3 +46,7 @@ Case where value is not an integer
     >>> bg.integer_validator("input_dict", {})
     Traceback (most recent call last):
     TypeError: input_dict must be an integer
+
+    >>> bg.integer_validator("input_tuple", (1,2))
+    Traceback (most recent call last):
+    TypeError: input_tuple must be an integer
