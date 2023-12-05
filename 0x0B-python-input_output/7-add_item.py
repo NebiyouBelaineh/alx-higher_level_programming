@@ -6,6 +6,7 @@ import sys
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
+
 def add_item():
     """Adds the argument to <json_list> everytime it is called"""
 
@@ -26,5 +27,6 @@ def add_item():
         else:
             loaded_obj.extend(args[i])
     save_to_json_file(loaded_obj, filename)
+
 
 add_item()
