@@ -9,7 +9,7 @@ def pascal_triangle(n):
 
     Args:
         n (int): integer parameter
-    
+
     Returns:
         pascal_list (list): list of lists of integers representing the Pascal's
         triangle
