@@ -10,9 +10,7 @@ def append_after(filename="", search_string="", new_string=""):
     with open(filename, 'r', encoding='utf-8') as txt_file:
         for i in txt_file:
             output += i
-            line = i.split()
-            for j in line:
-                if j[:len(search_string)] == search_string:
-                    output += new_string
+            if search_string in i:
+                output += new_string
     with open(filename, 'w', encoding='utf-8') as output_file:
         output_file.write(output)
