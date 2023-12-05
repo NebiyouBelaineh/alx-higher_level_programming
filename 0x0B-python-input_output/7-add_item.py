@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """This script adds all arguments to a Python list,
 and then saves them to a file: add_item.json"""
-import json
-import sys
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
@@ -11,8 +9,9 @@ load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
 
 def add_item(filename, args=[]):
+    import os
     """Adds the argument to <json_list> everytime it is called"""
-    if len(args) == 1:
+    if not os.path.isfile(filename):
         save_to_json_file([], filename)
         return
     loaded_obj = load_from_json_file(filename)
@@ -32,6 +31,7 @@ def main():
     """Main entry point of the program"""
     import json
     import sys
+
     args = sys.argv
     filename = 'add_item.json'
     add_item(filename, args)
