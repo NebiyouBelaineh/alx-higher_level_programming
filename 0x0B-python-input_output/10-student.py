@@ -17,7 +17,7 @@ class Student:
         Returns:
             dict: dictionary representation of an instance of class Student
         """
-        if attrs:
+        if isinstance(attrs, list) and all(type(t) for t in attrs):
             ret_dict = {}
             for i in attrs:
                 if getattr(self, i, None):
