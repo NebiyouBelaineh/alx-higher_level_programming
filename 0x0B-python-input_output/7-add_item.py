@@ -13,15 +13,14 @@ def add_item():
     args = sys.argv
     filename = 'add_item.json'
 
-    if not os.path.isfile(filename):
+    if not os.path.isfile(filename) and len(args) < 2:
         save_to_json_file([], filename)
         return
-    loaded_obj = load_from_json_file(filename)
+    try:
+        loaded_obj = load_from_json_file(filename)
+    except FileNotFoundError:
+        loaded_obj = []
     for i in range(1, len(args)):
-        # open file and get list from json file
-        # convert list to python object using load_from_json_file()
-        # append if i not a list, otherwise extend it
-        # use save_to_json_file() to save object to file
         if type(args[i]) is list:
             loaded_obj.extend(args[i])
         else:
