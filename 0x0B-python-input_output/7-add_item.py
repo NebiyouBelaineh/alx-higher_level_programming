@@ -23,11 +23,8 @@ def add_item():
         # convert list to python object using load_from_json_file()
         # append if i not a list, otherwise extend it
         # use save_to_json_file() to save object to file
-        if type(args[i]) is not list:
-            loaded_obj.append(args[i])
-        else:
-            loaded_obj.extend(args[i])
-    save_to_json_file(loaded_obj, filename)
+        loaded_obj.append(args[i])
+        save_to_json_file(loaded_obj, filename)
 
 
 add_item()
