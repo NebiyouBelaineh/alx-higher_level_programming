@@ -186,7 +186,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(result, _result)
 
     def test_create(self):
-        """Testing create() method in base class"""
+        """Testing create() method in Base class"""
         _result = "[Square] (20) 1/1 - 4\n"
         # test with ID not defined
         dict_rep_s4 = self.s4.to_dictionary()
@@ -207,3 +207,23 @@ class TestSquareClass(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), _result)
 
+    def test_load_from_file_noFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when the file does not exist
+        _result = []
+        list_squares = [self.s3, self.s4]
+        result = Square.load_from_file()
+        self.assertEqual(result, _result)
+
+    def test_load_from_file_withFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when file exists
+        _result = [self.s3, self.s4]
+        result = Square.load_from_file()
+        res_list = []
+        _res_list = []
+        if len(_result) == len(result):
+            for i in range(len(_result)):
+                res_list.append(result[i])
+                _res_list.append(_result[i])
+        self.assertEqual(_res_list, res_list)

@@ -320,3 +320,31 @@ class TestRectangleClass(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), _result)
 
+    def test_load_from_file(self):
+        """Testing load_from_file method in Base class"""
+        # Test when the file does not exist
+        _result = []
+        result = Rectangle.load_from_file()
+        self.assertEqual(result, _result)
+
+        # Test when file exists
+        _result = [self.r3, self.r4]
+        result = Rectangle.load_from_file()
+        res_list = []
+        _res_list = []
+        if len(_result) == len(result):
+            for i in range(len(_result)):
+                res_list.append(result[i])
+                _res_list.append(_result[i])
+
+        self.assertEqual(_res_list, res_list)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Class method that serializes in CSV saves to file"""
+        pass
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Class method that loads and deserilizes in CSV from a file"""
+        pass
