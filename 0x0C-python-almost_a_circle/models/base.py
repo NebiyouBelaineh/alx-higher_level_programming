@@ -2,6 +2,7 @@
 """This module contains the class Base which is the base of all classes"""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -114,3 +115,55 @@ class Base:
                 return list_output
         except FileNotFoundError as fne:
             return []
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Static method in class Base that draws all Rectangles and Squares"""
+        neba = turtle.Turtle()
+
+        neba.shape("square")
+        neba.screen.bgcolor("#9ED2BE")
+        neba.pensize(6)
+
+        neba.color("#FFA559", "#072541")
+        for lr in list_rectangles:
+            neba.showturtle()
+            neba.screen.delay(50)
+            neba.up()
+            neba.goto(lr.x, lr.y)
+            neba.down()
+            # Move and Turn
+            for turn in range(2):
+                # Increase scale for better visibility
+                neba.forward(lr.width * 2)
+                neba.left(90)
+                # Increase scale for better visibility
+                neba.forward(lr.height * 2)
+                neba.left(90)
+            neba.hideturtle()
+
+        neba.color("#2D4356", "#C51605")
+        neba.shape("circle")
+        for lq in list_squares:
+            neba.showturtle()
+            neba.screen.delay(50)
+            neba.up()
+            neba.goto(lq.x, lq.y)
+            neba.down()
+            # Move and Turn
+            for turn in range(2):
+                # Increase scale for better visibility
+                neba.forward(lq.width * 2)
+                neba.left(90)
+                # Increase scale for better visibility
+                neba.forward(lq.height * 2)
+                neba.left(90)
+            neba.hideturtle()
+        # Thank your reviewer
+        neba.showturtle()
+        neba.up()
+        neba.goto(0, -100)
+        neba.color("#900C3F")
+        neba.down()
+        neba.write("Thank you for the review, Have a great day!", align="center", font=("Arial", 32, "bold"))
+        turtle.exitonclick()
