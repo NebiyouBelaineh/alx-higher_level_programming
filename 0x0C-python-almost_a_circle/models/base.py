@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This module contains the class Base which is the base of all classes"""
 import json
-import random
+import csv
 
 
 class Base:
@@ -51,3 +51,66 @@ class Base:
         # Don't forget to use ** with dictionary values ;)
         dummy_instance.update(**dictionary)
         return dummy_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """Class method that returns a list of instances from a file"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as file:
+                list_json = cls.from_json_string(file.read())
+                list_output = []
+                # goes through list of json/dict values
+                for lj in list_json:
+                    # creates an instance object of containing the json/dict
+                    # values
+                    lj_obj = cls.create(**lj)
+                # appends the created object
+                    list_output.append(lj_obj)
+                return list_output
+        except FileNotFoundError as fne:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Class method that serializes in CSV saves to file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as csvfile:
+            if list_objs is None or len(list_objs) == 0:
+                csvfile.write("[]")
+                return
+            if filename == "Rectangle.csv":
+                fieldnames = ['id', 'width', 'height', 'x', 'y']
+            else:
+                fieldnames = ['id', 'size', 'x', 'y']
+            csvwriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            for lo in list_objs:
+                list_objs_dict_rep = lo.to_dictionary()
+                csvwriter.writerow(list_objs_dict_rep)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Class method that loads and deserilizes in CSV from a file"""
+        list_objs = []
+        list_output = []
+        filename = cls.__name__ + '.csv'
+        try:
+            with open(filename, newline='') as csvfile:
+                if filename == "Rectangle.csv":
+                    fieldnames = ['id', 'width', 'height', 'x', 'y']
+                else:
+                    fieldnames = ['id', 'size', 'x', 'y']
+                csvreader = csv.DictReader(csvfile, fieldnames=fieldnames)
+
+                for cr in csvreader:
+                    dict_rep = {}
+                    for key, value in cr.items():
+                        dict_rep[key] = int(value)
+                    list_objs.append(dict_rep)
+
+                for lo in list_objs:
+                    obj = cls.create(**lo)
+                    list_output.append(obj)
+                return list_output
+        except FileNotFoundError as fne:
+            return []

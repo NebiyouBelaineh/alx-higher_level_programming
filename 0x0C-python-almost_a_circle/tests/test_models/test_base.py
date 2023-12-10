@@ -32,4 +32,3 @@ class TestBaseClass(unittest.TestCase):
         self.b4.id = None
         self.b5.id = None
         Base._Base__nb_objects = 0
-

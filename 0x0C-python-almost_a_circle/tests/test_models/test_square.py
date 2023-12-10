@@ -6,6 +6,7 @@ from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
 import sys
+import os
 
 
 class TestSquareClass(unittest.TestCase):
@@ -162,7 +163,8 @@ class TestSquareClass(unittest.TestCase):
     def test_save_to_file(self):
         """Testing save_to_file() method from Base class with Class Square
         with list_objs input"""
-        _result = """[{"id": 3, "size": 3, "x": 1, "y": 3}, {"id": 20, "size": 4, "x": 1, "y": 1}]\n"""
+        _result = """[{"id": 3, "size": 3, "x": 1, "y": 3}, {"id": 20, "size":\
+ 4, "x": 1, "y": 1}]\n"""
         Square.save_to_file([self.s3, self.s4])
         try:
             with open("Square.json", "r") as file:
@@ -177,12 +179,13 @@ class TestSquareClass(unittest.TestCase):
     def test_from_json_string(self):
         """Testing from_json_string() Base class method with class Square"""
         list_input = [
-        {'id': 89, 'size': 4, 'x': 5, 'y': 6}, 
-        {'id': 7, 'size': 7, 'x': 3, 'y': 4}
+                        {'id': 89, 'size': 4, 'x': 5, 'y': 6},
+                        {'id': 7, 'size': 7, 'x': 3, 'y': 4}
         ]
         json_list_input = Square.to_json_string(list_input)
         result = Square.from_json_string(json_list_input)
-        _result = [{'size': 4, 'id': 89, 'x': 5, 'y': 6}, {'size': 7, 'id': 7, 'x': 3, 'y': 4}]
+        _result = [{'size': 4, 'id': 89, 'x': 5, 'y': 6}, {'size': 7, 'id': 7,
+                                                           'x': 3, 'y': 4}]
         self.assertEqual(result, _result)
 
     def test_create(self):
@@ -210,6 +213,11 @@ class TestSquareClass(unittest.TestCase):
     def test_load_from_file_noFile(self):
         """Testing load_from_file method in Base class"""
         # Test when the file does not exist
+        filename = "Square.json"
+        if os.path.exists(filename):
+            # Delete the file
+            os.remove(filename)
+
         _result = []
         list_squares = [self.s3, self.s4]
         result = Square.load_from_file()
@@ -220,6 +228,31 @@ class TestSquareClass(unittest.TestCase):
         # Test when file exists
         _result = [self.s3, self.s4]
         result = Square.load_from_file()
+        res_list = []
+        _res_list = []
+        if len(_result) == len(result):
+            for i in range(len(_result)):
+                res_list.append(result[i])
+                _res_list.append(_result[i])
+        self.assertEqual(_res_list, res_list)
+
+    def test_load_from_file_csv_noFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when the file does not exist
+        filename = "Square.csv"
+        if os.path.exists(filename):
+            # Delete the file
+            os.remove(filename)
+
+        _result = []
+        result = Square.load_from_file_csv()
+        self.assertEqual(result, _result)
+
+    def test_load_from_file_csv_withFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when file exists
+        _result = [self.s3, self.s4]
+        result = Square.load_from_file_csv()
         res_list = []
         _res_list = []
         if len(_result) == len(result):

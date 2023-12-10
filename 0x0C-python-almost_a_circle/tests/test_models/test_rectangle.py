@@ -5,6 +5,7 @@ from models.rectangle import Rectangle
 from models.base import Base
 from io import StringIO
 import sys
+import os
 
 
 class TestRectangleClass(unittest.TestCase):
@@ -274,7 +275,8 @@ class TestRectangleClass(unittest.TestCase):
     def test_save_to_file(self):
         """Testing save_to_file() method from Base class with Class Rectangle
         with list_objs input"""
-        _result = """[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8}, {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]\n"""
+        _result = """[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8},\
+ {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]\n"""
         self.r1 = Rectangle(10, 7, 2, 8)
         self.r2 = Rectangle(2, 4)
         Rectangle.save_to_file([self.r1, self.r2])
@@ -291,12 +293,13 @@ class TestRectangleClass(unittest.TestCase):
     def test_from_json_string(self):
         """Testing from_json_string() Base class method with class Rectangle"""
         list_input = [
-        {'id': 89, 'width': 10, 'height': 4}, 
-        {'id': 7, 'width': 1, 'height': 7}
+                        {'id': 89, 'width': 10, 'height': 4},
+                        {'id': 7, 'width': 1, 'height': 7}
         ]
         json_list_input = Rectangle.to_json_string(list_input)
         result = Rectangle.from_json_string(json_list_input)
-        _result = [{'height': 4, 'width': 10, 'id': 89}, {'height': 7, 'width': 1, 'id': 7}]
+        _result = [{'height': 4, 'width': 10, 'id': 89}, {'height': 7,
+                                                          'width': 1, 'id': 7}]
         self.assertEqual(result, _result)
 
     def test_create(self):
@@ -323,10 +326,17 @@ class TestRectangleClass(unittest.TestCase):
     def test_load_from_file(self):
         """Testing load_from_file method in Base class"""
         # Test when the file does not exist
+        filename = "Rectangle.json"
+        if os.path.exists(filename):
+            # Delete the file
+            os.remove(filename)
+
         _result = []
         result = Rectangle.load_from_file()
         self.assertEqual(result, _result)
 
+    def test_load_from_file_csv_withFile(self):
+        """Testing load_from_file method in Base class"""
         # Test when file exists
         _result = [self.r3, self.r4]
         result = Rectangle.load_from_file()
@@ -339,12 +349,27 @@ class TestRectangleClass(unittest.TestCase):
 
         self.assertEqual(_res_list, res_list)
 
-    @classmethod
-    def save_to_file_csv(cls, list_objs):
-        """Class method that serializes in CSV saves to file"""
-        pass
+    def test_load_from_file_csv_noFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when the file does not exist
+        filename = "Rectangle.csv"
+        if os.path.exists(filename):
+            # Delete the file
+            os.remove(filename)
 
-    @classmethod
-    def load_from_file_csv(cls):
-        """Class method that loads and deserilizes in CSV from a file"""
-        pass
+        _result = []
+        result = Rectangle.load_from_file_csv()
+        self.assertEqual(result, _result)
+
+    def test_load_from_file_csv_withFile(self):
+        """Testing load_from_file method in Base class"""
+        # Test when file exists
+        _result = [self.r3, self.r4]
+        result = Rectangle.load_from_file_csv()
+        res_list = []
+        _res_list = []
+        if len(_result) == len(result):
+            for i in range(len(_result)):
+                res_list.append(result[i])
+                _res_list.append(_result[i])
+        self.assertEqual(_res_list, res_list)
