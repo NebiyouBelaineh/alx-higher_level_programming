@@ -86,7 +86,7 @@ class TestRectangleClass(unittest.TestCase):
             result = Rectangle(10, 5, 0, [5])
 
     def testNonIntY_tuple(self):
-        """Testing TypeError exception with non-integer Y inputs"""    
+        """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, (5, 2))
 
@@ -140,8 +140,13 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_area(self):
         """Testing area output"""
-        result = self.r1.width * self.r2.height
+        result = self.r1.width * self.r1.height
         self.assertEqual(result, 20)
+
+    def test_initilizer_method_missing_args(self):
+        """Testing area output"""
+        with self.assertRaises(TypeError):
+            self.r1 = Rectangle(1)
 
     def test_display(self):
         """Testing display output"""
@@ -173,7 +178,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_update_normal_inputs_width(self):
         """Testing update method using variable argument
-        with normal inputs"""        
+        with normal inputs"""
         # test update() with width
         result = self.r2.update(89, 2)
         self.assertEqual(self.r2.width, 2)
@@ -361,7 +366,7 @@ class TestRectangleClass(unittest.TestCase):
         print(result)
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), _result)
-    
+
     def test_create_predefined_ID(self):
         """Testing create() method in base class"""
         # test with predefined ID
