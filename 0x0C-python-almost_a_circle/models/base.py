@@ -77,7 +77,10 @@ class Base:
             from dictionary
         """
         # Dummy instance created
-        dummy_instance = cls(1, 2, 3)
+        if cls.__name__ == "Rectangle":
+            dummy_instance = cls(2, 3)
+        else:
+            dummy_instance = cls(1)
         # Don't forget to use ** with dictionary values ;)
         dummy_instance.update(**dictionary)
         return dummy_instance
