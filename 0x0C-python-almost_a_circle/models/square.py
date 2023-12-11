@@ -13,18 +13,31 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
-        """Returns the string representation of class Square"""
+        """Returns the string representation of class Square
+
+        Returns:
+            str: string representation of Square class instance
+        """
         return ("[Square] ({}) {}/{} - {}"
                 .format(self.id, super().x, super().y, super().width))
 
     @property
     def size(self):
-        """Getter method for width/height, i.e size"""
+        """Getter method for width/height, i.e size
+
+        Returns:
+            int: returns the value of width
+        """
         return self.width
 
     @size.setter
     def size(self, value):
-        """Setter method for width/height, i.e size"""
+        """Setter method for width/height, i.e size
+
+        Args:
+            value (int): integer value to be assigned to width and height,
+            since squares has equal width and height
+        """
         self.width = value
         self.height = value
 
@@ -52,7 +65,11 @@ class Square(Rectangle):
                     self.y = value
 
     def to_dictionary(self):
-        """Returns the dictionary representation of a Square"""
+        """Returns the dictionary representation of a Square
+
+        Returns:
+            dictionary: dictionary representation of Square instance
+        """
         dict_rep = {
              "id": self.id,
              "size": self.width,

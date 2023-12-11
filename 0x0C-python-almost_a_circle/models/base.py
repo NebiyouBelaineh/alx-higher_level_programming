@@ -12,6 +12,12 @@ class Base:
     __nb_objects = 0
 
     def __init__(self, id=None):
+        """Initializer method for class Base
+
+        Args:
+            id (int, optional): id number for all objects from Base or
+            inherit from Base. Defaults to None.
+        """
         if id is not None:
             self.id = id
         else:
@@ -20,7 +26,14 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """Returns the JSON string representation of list_dictionaries"""
+        """Returns the JSON string representation of list_dictionaries
+
+        Args:
+            list_dictionaries (list): a list of dictionaries
+
+        Returns:
+            str: JSON string representation of list_dictionaries
+        """
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         else:
@@ -28,7 +41,12 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Writes the JSON string representation of list_objs to a file"""
+        """Writes the JSON string representation of list_objs to a file
+
+        Args:
+            list_objs (list): contains a list of objects to be saved to a
+            file
+        """
         filename = (cls.__name__+".json")
         with open(filename, "w", encoding='utf-8') as file:
             if list_objs is None:
@@ -39,14 +57,25 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string):
-        """Returns the list of the JSON string representation"""
+        """Returns the list of the JSON string representation
+
+        Args:
+            json_string (str): JSON string representation of an object
+
+        Returns:
+            list: list of objects
+        """
         if json_string is None:
             return []
         return json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
-        """Returns an instance with all attributes already set"""
+        """Returns an instance with all attributes already set
+        Returns:
+            object: an instance of the calling class with updated attributes
+            from dictionary
+        """
         # Dummy instance created
         dummy_instance = cls(1, 2, 3)
         # Don't forget to use ** with dictionary values ;)
@@ -55,7 +84,11 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """Class method that returns a list of instances from a file"""
+        """Class method that returns a list of instances from a file
+
+        Returns:
+            list: list of instances from a file
+        """
         filename = cls.__name__ + ".json"
         try:
             with open(filename, "r") as file:
@@ -74,7 +107,11 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """Class method that serializes in CSV saves to file"""
+        """Class method that serializes in CSV saves to file
+
+        Args:
+            list_objs (list): list objects to be saved in a csv file
+        """
         filename = cls.__name__ + ".csv"
         with open(filename, 'w', newline='') as csvfile:
             if list_objs is None or len(list_objs) == 0:
@@ -91,7 +128,12 @@ class Base:
 
     @classmethod
     def load_from_file_csv(cls):
-        """Class method that loads and deserilizes in CSV from a file"""
+        """Class method that loads and deserilizes in CSV from a file
+
+        Returns:
+            list: list of instance of the calling class loaded from a
+            CSV file
+        """
         list_objs = []
         list_output = []
         filename = cls.__name__ + '.csv'
@@ -118,7 +160,12 @@ class Base:
 
     @staticmethod
     def draw(list_rectangles, list_squares):
-        """Static method in class Base that draws all Rectangles and Squares"""
+        """Static method in class Base that draws all Rectangles and Squares
+
+        Args:
+            list_rectangles (list): Contains a list of rectangles to be drawn
+            list_squares (list): Contains a list of squares to be drawn
+        """
         neba = turtle.Turtle()
 
         neba.shape("square")
@@ -165,5 +212,6 @@ class Base:
         neba.goto(0, -100)
         neba.color("#900C3F")
         neba.down()
-        neba.write("Thank you for the review, Have a great day!", align="center", font=("Arial", 32, "bold"))
+        neba.write("Thank you for the review, Have a great day!",
+                   align="center", font=("Arial", 32, "bold"))
         turtle.exitonclick()

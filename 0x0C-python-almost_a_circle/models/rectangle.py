@@ -14,12 +14,24 @@ class Rectangle(Base):
 
     @property
     def width(self):
-        """Getter for width"""
+        """Getter method for width
+
+        Returns:
+            int: value of width instance attribute
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Setter for width"""
+        """Setter for width
+
+        Args:
+            value (int): Value to be assigned to width
+
+        Raises:
+            TypeError: raised if width is not an integer
+            ValueError: raised if width is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -28,12 +40,24 @@ class Rectangle(Base):
 
     @property
     def height(self):
-        """Getter for height"""
+        """Getter method for height
+
+        Returns:
+            int: value of height instance attribute
+        """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Setter for height"""
+        """Setter for height
+
+        Args:
+            value (int): Value to be assigned to y
+
+        Raises:
+            TypeError: raised if height is not an integer
+            ValueError: raised if height is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
@@ -42,12 +66,24 @@ class Rectangle(Base):
 
     @property
     def x(self):
-        """Getter for x"""
+        """Getter method for x
+
+        Returns:
+            int: value of x instance attribute
+        """
         return self.__x
 
     @x.setter
     def x(self, value):
-        """Setter for x"""
+        """Setter for x
+
+        Args:
+            value (int): Value to be assigned to x
+
+        Raises:
+            TypeError: raised if x is not an integer
+            ValueError: raised if x is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         if value < 0:
@@ -56,12 +92,24 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        """Getter for y"""
+        """Getter method for y
+
+        Returns:
+            int: value of y instance attribute
+        """
         return self.__y
 
     @y.setter
     def y(self, value):
-        """Setter for y"""
+        """Setter for y
+
+        Args:
+            value (int): Value to be assigned to y
+
+        Raises:
+            TypeError: raised if y is not an integer
+            ValueError: raised if y is less than 0
+        """
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         if value < 0:
@@ -69,7 +117,11 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Returns the area value of a Rectangle instance"""
+        """Returns the area value of a Rectangle instance
+
+        Returns:
+            int: area of a Rectangle instance
+        """
         return (self.width * self.height)
 
     def display(self):
@@ -93,13 +145,18 @@ class Rectangle(Base):
         print(rectangle)
 
     def __str__(self):
-        """Returns a string representation of class Rectangle"""
+        """Returns a string representation of class Rectangle
+
+        Returns:
+            str: string representation of Rectangle class instance
+        """
         return ("[Rectangle] ({}) {}/{} - {}/{}"
                 .format(self.id, self.x, self.y, self.width, self.height))
 
     def update(self, *args, **kwargs):
         """Method that updates/assigns new values to attributes of
-        class Rectangle or the Parent Class"""
+        class Rectangle or the Parent Class
+        """
         if len(args) > 0:
             super().__init__(args[0])
             if len(args) >= 2:
@@ -124,7 +181,11 @@ class Rectangle(Base):
                     self.y = value
 
     def to_dictionary(self):
-        """Returns the dictionary representation of a Rectangle"""
+        """Returns the dictionary representation of a Rectangle
+
+        Returns:
+            dictionary: dictionary representation of a Rectangle
+        """
         dict_rep = {
             "id": self.id,
             "width": self.width,
