@@ -75,16 +75,28 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 5.5)
 
-    def testNonIntY(self):
+    def testNonIntY_str(self):
         """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, '5')
+
+    def testNonIntY_list(self):
+        """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, [5])
+
+    def testNonIntY_tuple(self):
+        """Testing TypeError exception with non-integer Y inputs"""    
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, (5, 2))
+
+    def testNonIntY_dict(self):
+        """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, {})
+
+    def testNonIntY_float(self):
+        """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, 5.5)
 
@@ -152,44 +164,59 @@ class TestRectangleClass(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), "\n ##\n")
 
-    def test_update_normal_inputs(self):
+    def test_update_normal_inputs_id(self):
         """Testing update method using variable argument
         with normal inputs"""
         # test update with id
         result = self.r5.update(89)
         self.assertEqual(self.r5.id, 89)
 
+    def test_update_normal_inputs_width(self):
+        """Testing update method using variable argument
+        with normal inputs"""        
         # test update() with width
         result = self.r2.update(89, 2)
         self.assertEqual(self.r2.width, 2)
 
+    def test_update_normal_inputs_height(self):
+        """Testing update method using variable argument
+        with normal inputs"""
         # test update () with height
         result = self.r2.update(89, 2, 3)
         self.assertEqual(self.r2.height, 3)
 
+    def test_update_normal_inputs_x(self):
+        """Testing update method using variable argument
+        with normal inputs"""
         # test update () with x
         result = self.r2.update(89, 2, 3, 4)
         self.assertEqual(self.r2.x, 4)
 
+    def test_update_normal_inputs_y(self):
+        """Testing update method using variable argument
+        with normal inputs"""
         # test update () with y
         result = self.r2.update(89, 2, 3, 4, 5)
         self.assertEqual(self.r2.y, 5)
 
-    def test_update_negative(self):
+    def test_update_negative_y(self):
         """Testing update() with negative  inputs"""
         # test update () with negative values
         with self.assertRaises(ValueError):
             result = self.r2.update(89, 2, 3, 4, -5)
 
+    def test_update_negative_x(self):
+        """Testing update() with negative  inputs"""
         with self.assertRaises(ValueError):
             result = self.r2.update(89, 2, 3, -4, 5)
 
+    def test_update_negative_height(self):
+        """Testing update() with negative  inputs"""
         with self.assertRaises(ValueError):
             result = self.r2.update(89, 2, -3, 4, 5)
 
-        with self.assertRaises(ValueError):
-            result = self.r2.update(89, 2, -3, 4, 5)
-
+    def test_update_negative_width(self):
+        """Testing update() with negative  inputs"""
         with self.assertRaises(ValueError):
             result = self.r2.update(89, -2, 3, 4, 5)
 
@@ -200,38 +227,53 @@ class TestRectangleClass(unittest.TestCase):
 
     # May not be needed since inputs are tested individually and exceptions
     # are handled
-    def test_update_non_integer(self):
+    def test_update_non_integer_float_y(self):
         """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.r2.update(89, 2, 3, 4, 5.1)
 
+    def test_update_non_integer_float_x(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.r2.update(89, 2, 3, 4.2, 5)
 
+    def test_update_non_integer_tuple(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.r2.update(89, 2, (3, 3), 4, 5)
 
+    def test_update_non_integer_dict(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.r2.update(89, 2, 3, {4}, 5)
 
+    def test_update_non_integer_str(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.r2.update(89, '2', 3, 4, 5)
 
-    def test_update_kwargs(self):
+    def test_update_kwargs_id(self):
         """Testing update() with kwargs"""
-
         result = self.r5.update(id=4)
         self.assertEqual(4, self.r5.id)
 
+    def test_update_kwargs_width(self):
+        """Testing update() with kwargs"""
         result = self.r5.update(width=9)
         self.assertEqual(9, self.r5.width)
 
+    def test_update_kwargs_height(self):
+        """Testing update() with kwargs"""
         result = self.r2.update(height=1)
         self.assertEqual(1, self.r2.height)
 
+    def test_update_kwargs_x(self):
+        """Testing update() with kwargs"""
         result = self.r2.update(x=22)
         self.assertEqual(22, self.r2.x)
 
+    def test_update_kwargs_y(self):
+        """Testing update() with kwargs"""
         result = self.r1.update(y=8)
         self.assertEqual(8, self.r1.y)
 
@@ -247,10 +289,16 @@ class TestRectangleClass(unittest.TestCase):
         dict_rep = self.r4.to_dictionary()
         result = Base.to_json_string([dict_rep])
         self.assertEqual(result, _result)
+
+    def testToJson_str_none(self):
+        """Testing Base method to_json_string()"""
         # test with None
         _result = "[]"
         result = Base.to_json_string(None)
         self.assertEqual(result, _result)
+
+    def testToJson_str_empty_list(self):
+        """Testing Base method to_json_string()"""
         # test with empty list
         _result = "[]"
         list_rep = []
@@ -313,6 +361,9 @@ class TestRectangleClass(unittest.TestCase):
         print(result)
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), _result)
+    
+    def test_create_predefined_ID(self):
+        """Testing create() method in base class"""
         # test with predefined ID
         _result = "[Rectangle] (12) 0/0 - 10/2\n"
         dict_rep_r2 = self.r2.to_dictionary()

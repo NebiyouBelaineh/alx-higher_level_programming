@@ -61,20 +61,29 @@ class TestSquareClass(unittest.TestCase):
         result = self.s2.size
         self.assertEqual(result, 2)
 
-    def testSquare_update(self):
+    def testSquare_update_id(self):
         """Testing update() method"""
         # update id
         self.s4.update(22)
         result = self.s4.id
         self.assertEqual(result, 22)
+
+    def testSquare_update_size(self):
+        """Testing update() method"""
         # update size
         self.s4.update(22, 4)
         result = self.s4.size
         self.assertEqual(result, 4)
+
+    def testSquare_update_x(self):
+        """Testing update() method"""
         # update x
         self.s4.update(22, 4, 4)
         result = self.s4.x
         self.assertEqual(result, 4)
+
+    def testSquare_update_y(self):
+        """Testing update() method"""
         # update y
         self.s4.update(22, 4, 4, 5)
         result = self.s4.y
@@ -86,41 +95,58 @@ class TestSquareClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             result = self.s2.update(89, 2, 3, -4)
 
+    def test_update_negative_x(self):
+        """Testing update() with negative  inputs"""
         with self.assertRaises(ValueError):
             result = self.s2.update(89, 2, -3, 4)
 
+    def test_update_negative_size(self):
+        """Testing update() with negative  inputs"""
         with self.assertRaises(ValueError):
             result = self.s2.update(89, -2, 3, 4)
 
-    def test_update_non_integer(self):
+    def test_update_non_integer_yFloat(self):
         """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.s3.update(89, 2, 3, 5.1)
 
+    def test_update_non_integer_xFloat(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.s3.update(89, 2, 4.2, 5)
 
+    def test_update_non_integer_sizeTuple(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.s3.update(89, (3, 3), 4, 5)
 
+    def test_update_non_integer_yDict(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.s3.update(89, 2, 3, {4})
 
+    def test_update_non_integer_sizeStr(self):
+        """Testing update() with non integers"""
         with self.assertRaises(TypeError):
             result = self.s3.update(89, '2', 4, 5)
 
-    def test_update_kwargs(self):
+    def test_update_kwargs_id(self):
         """Testing update() with kwargs"""
-
         result = self.s2.update(id=4)
         self.assertEqual(4, self.s2.id)
 
+    def test_update_kwargs_size(self):
+        """Testing update() with kwargs"""
         result = self.s2.update(size=9)
         self.assertEqual(9, self.s2.size)
 
+    def test_update_kwargs_x(self):
+        """Testing update() with kwargs"""
         result = self.s2.update(x=22)
         self.assertEqual(22, self.s2.x)
 
+    def test_update_kwargs_y(self):
+        """Testing update() with kwargs"""
         result = self.s2.update(y=8)
         self.assertEqual(8, self.s2.y)
 
@@ -135,10 +161,16 @@ class TestSquareClass(unittest.TestCase):
         dict_rep = self.s4.to_dictionary()
         result = Base.to_json_string([dict_rep])
         self.assertEqual(result, _result)
+
+    def testToJson_str_withNone(self):
+        """Testing Base method to_json_string()"""
         # test with None
         _result = "[]"
         result = Base.to_json_string(None)
         self.assertEqual(result, _result)
+
+    def testToJson_str_withEmptyList(self):
+        """Testing Base method to_json_string()"""
         # test with empty list
         _result = "[]"
         list_rep = []
@@ -188,7 +220,7 @@ class TestSquareClass(unittest.TestCase):
                                                            'x': 3, 'y': 4}]
         self.assertEqual(result, _result)
 
-    def test_create(self):
+    def test_create_noID(self):
         """Testing create() method in Base class"""
         _result = "[Square] (20) 1/1 - 4\n"
         # test with ID not defined
@@ -199,6 +231,9 @@ class TestSquareClass(unittest.TestCase):
         print(result)
         sys.stdout = sys.__stdout__
         self.assertEqual(cap_output.getvalue(), _result)
+
+    def test_create_withID(self):
+        """Testing create() method in Base class"""
         # test with predefined ID
         # self.s3 = Square(3, 1, 3)
         _result = "[Square] (3) 1/3 - 3\n"
