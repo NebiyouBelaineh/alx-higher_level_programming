@@ -40,40 +40,136 @@ class TestRectangleClass(unittest.TestCase):
         """Testing TypeError exception with non-integer Width inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle('ten', 5)
+
+    def testNonIntWidth_list(self):
+        """Testing TypeError exception with non-integer Width inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle([10], 5)
+
+    def testNonIntWidth_tuple(self):
+        """Testing TypeError exception with non-integer Width inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle((10, 2), 5)
+
+    def testNonIntWidth_dict(self):
+        """Testing TypeError exception with non-integer Width inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle({}, 5)
+
+    def testNonIntWidth_float(self):
+        """Testing TypeError exception with non-integer Width inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10.5, 5)
+
+    def testNonIntWidth_None(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(None, 5)
+
+    def testNonIntWidth_Bool(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(True, 5)
+
+    def testNonIntWidth_Nan(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(float('nan'), 5)
+
+    def testNonIntWidtht_Inf(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(float('inf'), 5)
 
     def testNonIntHeight(self):
         """Testing TypeError exception with non-integer Height inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, '5')
+
+    def testNonIntHeight_list(self):
+        """Testing TypeError exception with non-integer Height inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, [5])
+
+    def testNonIntHeight_tuple(self):
+        """Testing TypeError exception with non-integer Height inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, (5, 2))
+
+    def testNonIntHeight_dict(self):
+        """Testing TypeError exception with non-integer Height inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, {})
+
+    def testNonIntHeight_float(self):
+        """Testing TypeError exception with non-integer Height inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5.5)
 
-    def testNonIntX(self):
+    def testNonIntHeight_None(self):
+        """Testing TypeError exception with non-integer Height inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, None)
+
+    def testNonIntHeight_Bool(self):
+        """Testing TypeError exception with non-integer Height inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, True)
+
+    def testNonIntHeight_Nan(self):
+        """Testing TypeError exception with non-integer Height inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, float('nan'))
+
+    def testNonIntHeight_Inf(self):
+        """Testing TypeError exception with non-integer Height inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, float('inf'))
+
+    def testNonIntX_str(self):
         """Testing TypeError exception with non-integer X inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, '5')
+
+    def testNonIntX_list(self):
+        """Testing TypeError exception with non-integer X inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, [5])
+
+    def testNonIntX_tuple(self):
+        """Testing TypeError exception with non-integer X inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, (5, 2))
+
+    def testNonIntX_dict(self):
+        """Testing TypeError exception with non-integer X inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, {})
+
+    def testNonIntX_float(self):
+        """Testing TypeError exception with non-integer X inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 5.5)
+
+    def testNonIntX_None(self):
+        """Testing TypeError exception with non-integer X inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, 5, None)
+
+    def testNonIntX_Bool(self):
+        """Testing TypeError exception with non-integer X inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, 5, True)
+
+    def testNonIntX_Nan(self):
+        """Testing TypeError exception with non-integer X inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, float('nan'))
+
+    def testNonIntX_Inf(self):
+        """Testing TypeError exception with non-integer X inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, float('inf'))
 
     def testNonIntY_str(self):
         """Testing TypeError exception with non-integer Y inputs"""
@@ -99,6 +195,36 @@ class TestRectangleClass(unittest.TestCase):
         """Testing TypeError exception with non-integer Y inputs"""
         with self.assertRaises(TypeError):
             result = Rectangle(10, 5, 0, 5.5)
+
+    def testNonIntY_None(self):
+        """Testing TypeError exception with non-integer Y inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, 5, 0, None)
+
+    def testNonIntY_None_bool(self):
+        """Testing TypeError exception with non-integer Y inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(10, 5, 0, False)
+
+    def testNonIntY_Nan(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, 5, 4, float('nan'))
+
+    def testNonIntY_Inf(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(5, 4, 4, float('inf'))
+
+    def test_no_arg(self):
+        """Testing TypeError exception with no arguments"""
+        with self.assertRaises(TypeError):
+            result = Rectangle()
+
+    def testOne_arg_missing(self):
+        """Testing TypeError exception with no arguments"""
+        with self.assertRaises(TypeError):
+            result = Rectangle(1)
 
     def testGetterWidth(self):
         """Testing Getter method for Width"""

@@ -26,6 +26,11 @@ class TestSquareClass(unittest.TestCase):
         del self.s3
         del self.s4
 
+    def test_no_arg(self):
+        """Testing TypeError exception with no arguments"""
+        with self.assertRaises(TypeError):
+            result = Square()
+
     def testSquare_zero_size(self):
         """Testing class Square with zero size"""
         with self.assertRaises(ValueError):
@@ -60,6 +65,16 @@ class TestSquareClass(unittest.TestCase):
         """Testing class Square with str values"""
         with self.assertRaises(TypeError):
             self.s1 = Square(1, 2, '-5')
+
+    def testSquare_size_Nan(self):
+        """Testing TypeError exception with non-integer Width inputs"""
+        with self.assertRaises(TypeError):
+            result = Square(float('nan'))
+
+    def testSquare_size_Inf(self):
+        """Testing TypeError exception with non-integer Size inputs"""
+        with self.assertRaises(TypeError):
+            result = Square(float('inf'))
 
     def testSquare_size(self):
         """Testing Square class with Height and Width it inherits
