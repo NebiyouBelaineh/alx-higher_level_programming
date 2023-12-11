@@ -209,9 +209,11 @@ class Base:
         # Thank your reviewer
         neba.showturtle()
         neba.up()
+        neba.hideturtle()
         neba.goto(0, -100)
         neba.color("#900C3F")
         neba.down()
         neba.write("Thank you for the review, Have a great day!",
-                   align="center", font=("Arial", 32, "bold"))
+                   align="center", font=("Arial", 24, "bold"))
+        neba.up()
         turtle.exitonclick()
