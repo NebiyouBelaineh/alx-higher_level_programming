@@ -26,6 +26,11 @@ class TestSquareClass(unittest.TestCase):
         del self.s3
         del self.s4
 
+    def testSquare_zero_size(self):
+        """Testing class Square with zero size"""
+        with self.assertRaises(ValueError):
+            self.s1 = Square(0)
+
     def testSquare_negative_values_size(self):
         """Testing class Square with negative values"""
         with self.assertRaises(ValueError):

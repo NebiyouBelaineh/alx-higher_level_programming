@@ -138,6 +138,16 @@ class TestRectangleClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             result = Rectangle(10, 5, 1, -1)
 
+    def testWidth_zero(self):
+        """Testing width = 0"""
+        with self.assertRaises(ValueError):
+            result = Rectangle(0, 5, 1, 1)
+
+    def testHeight_zero(self):
+        """Testing height = 0"""
+        with self.assertRaises(ValueError):
+            result = Rectangle(10, 0, 1, 5)
+
     def test_area(self):
         """Testing area output"""
         result = self.r1.width * self.r1.height
