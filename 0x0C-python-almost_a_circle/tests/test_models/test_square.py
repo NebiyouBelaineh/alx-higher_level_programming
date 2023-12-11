@@ -155,6 +155,16 @@ class TestSquareClass(unittest.TestCase):
         result = self.s4.to_dictionary()
         self.assertEqual(result, {"id": 20, "size": 4, "x": 1, "y": 1})
 
+    def testSquare_toDict_withOne_arg(self):
+        """Testing to_dictionary() method in Square class"""
+        result = self.s1.to_dictionary()
+        self.assertEqual(result, {"id": 1, "size": 5, "x": 0, "y": 0})
+
+    def testSquare_initializer(self):
+        """Testing to_dictionary() method in Square class"""
+        with self.assertRaises(TypeError):
+            self.s1 = Square()
+
     def testToJson_str(self):
         """Testing Base method to_json_string()"""
         _result = """[{"id": 20, "size": 4, "x": 1, "y": 1}]"""
