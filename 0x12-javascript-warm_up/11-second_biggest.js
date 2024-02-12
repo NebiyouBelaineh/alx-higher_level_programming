@@ -3,7 +3,7 @@ const argv = process.argv;
 if ((argv.length < 4)) {
   console.log(0);
 } else {
-  let max = 0; let max2 = 0;
+  let max = -Infinity; let max2 = -Infinity;
   const size = argv.length;
   for (let i = 2; i < size; i++) {
     const num = parseInt(argv[i]);
@@ -12,5 +12,9 @@ if ((argv.length < 4)) {
       max = num;
     }
   }
-  console.log(max2);
+  if (max2 === -Infinity) {
+    console.log(0);
+  } else {
+    console.log(max2);
+  }
 }
