@@ -1,9 +1,9 @@
 #!/usr/bin/node
 const argv = process.argv;
-if ((argv.length < 3)) {
+if ((argv.length < 4)) {
   console.log(0);
 } else {
-  let max = 0; let max2;
+  let max = 0; let max2 = 0;
   const size = argv.length;
   for (let i = 2; i < size; i++) {
     const num = parseInt(argv[i]);
