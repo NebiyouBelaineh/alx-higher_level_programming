@@ -11,8 +11,8 @@ if __name__ == "__main__":
                            passwd=sys.argv[2], db=sys.argv[3],
                            charset="utf8")
     cur = conn.cursor()
-    query = "SELECT * FROM `states` WHERE `name` = %s"
-    cur.execute(query, (sys.argv[4],))
+    name = (sys.argv[4])
+    cur.execute("SELECT * FROM `states` WHERE `name` = `{}`".format(name))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
