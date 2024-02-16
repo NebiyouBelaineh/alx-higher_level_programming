@@ -17,7 +17,8 @@ if __name__ == "__main__":
     `cities`.`id`"""
     cur.execute(query, (name,))
     query_rows = cur.fetchall()
-    for row in query_rows:
-        print(row)
+
+    result = ", ".join(row[0] for row in query_rows)
+    print(result)
     cur.close()
     conn.close()
