@@ -13,8 +13,8 @@ if __name__ == "__main__":
                            charset="utf8")
     cur = conn.cursor()
     name = (sys.argv[4])
-    query = "SELECT * FROM `states` WHERE BINARY `name` = {}".format('%s')
-    cur.execute(query, (sys.argv[4],))
+    query = "SELECT * FROM `states` WHERE `name` = %s"
+    cur.execute(query, (name,))
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
