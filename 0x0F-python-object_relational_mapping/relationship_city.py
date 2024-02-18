@@ -1,24 +1,30 @@
 #!/usr/bin/python3
-""" Python file that contains the class definition of a City."""
-
+""" City module """
 
 from sqlalchemy import Column, Integer, String, ForeignKey
-from relationship_state import Base, State
+from sqlalchemy.orm import relationship
+from relationship_state import Base
 
 
 class City(Base):
-    """City class:
-        - inherits from Base (imported from model_state)
-        - links to the MySQL table cities
-        - class attribute id that represents a column of an auto-generated,
-        unique integer, can’t be null and is a primary key
-        - class attribute name that represents a column of a string of 128
-        characters and can’t be null
-        - class attribute state_id that represents a column of an integer,
-        can’t be null and is a foreign key to states.id"""
-    __tablename__ = "cities"
+    """
+    City class that inherits from Base class
 
-    id = Column(Integer, autoincrement=True, primary_key=True, unique=True,
-                nullable=False)
+    Attributes:
+        __tablename__ (str): The name of the table.
+        id (int): the unique identifier for the city (primary key).
+        name (str): The name of the city.
+        state_id (int): The id of the state (foreign key)
+
+    Usage:
+        Define a class that represent a city in a database
+    """
+    __tablename__ = 'cities'
+    id = Column(Integer, nullable=False,
+                primary_key=True, autoincrement=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey(State.id), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+    state = relationship("State", back_populates="cities")
+
+    def __repr__(self):
+        return f"{self.id}: {self.name}"
