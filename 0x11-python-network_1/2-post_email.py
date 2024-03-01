@@ -1,18 +1,26 @@
 #!/usr/bin/python3
-"""Python script that takes in a URL and an email, sends a POST request to the
-passed URL with the email as a parameter, and displays the body of the response
-(decoded in utf-8)"""
+"""fetches https://alx-intranet.hbtn.io/status and
+   get the 'X-Request-Id' value
+"""
+
+
 if __name__ == "__main__":
-    import urllib.request
-    import urllib.parse
+    from urllib import parse, request
+    from urllib.error import HTTPError, URLError
     import sys
+    import urllib
 
     url = sys.argv[1]
     email = sys.argv[2]
-    var = {'email': email}
-    data = urllib.parse.urlencode(var)
-    data = data.encode('utf-8')
-    req = urllib.request.Request(url, data)
-    with urllib.request.urlopen(req) as response:
-        res = response.read()
-        print(res.decode('utf-8'))
+    data = parse.urlencode({'email': email}).encode('utf-8')
+    req = request.Request(url, data=data)
+    try:
+        with request.urlopen(req, timeout=10) as response:
+            content = response.read().decode('utf-8')
+            print(content)
+    except HTTPError as error:
+        print(error.status, error.reason)
+    except URLError as error:
+        print(error.reason)
+    except TimeoutError:
+        print("Request timed out")
