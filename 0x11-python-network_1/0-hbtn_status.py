@@ -6,4 +6,4 @@ with urllib.request.urlopen(url) as response:
     res = response.read()
     print(type(res))
     print(res)
-    print(res.decode())
+    print(res.decode('utf-8'))
