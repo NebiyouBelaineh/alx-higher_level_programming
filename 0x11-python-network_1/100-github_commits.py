@@ -24,7 +24,8 @@ if __name__ == "__main__":
             commits_list.append(commits)
         commits_list = sorted(commits_list, key=lambda d: d['date'],
                               reverse=True)
-        for index in range(0, 10):
+        num = len(commits_list) if len(commits_list) < 10 else 10
+        for index in range(0, num):
             value = commits_list[index]
             result = "{}: {}".format(value.get("sha"), value.get("name"))
             print(result)
