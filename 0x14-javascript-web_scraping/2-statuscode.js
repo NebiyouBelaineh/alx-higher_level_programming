@@ -9,5 +9,5 @@ request(reqUrl, function (err, response) {
   if (err) {
     console.log(err);
   }
-  console.log(response && response.statusCode);
+  console.log('code:',response && response.statusCode);
 });
