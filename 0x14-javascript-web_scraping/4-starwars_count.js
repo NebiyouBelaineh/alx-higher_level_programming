@@ -7,7 +7,11 @@ const request = require('request');
 // const apiUrl = process.argv[2];
 
 // Url for making a GET request based on movieId
-const reqUrl = 'https://swapi-api.alx-tools.com/api/people/18';
+const reqUrl = process.argv[2];
+// actorId we are interested in
+const actorId = 'people/18';
+// Set counter
+let count = 0;
 
 // Make request
 request(reqUrl, function (err, response, body) {
@@ -15,5 +19,17 @@ request(reqUrl, function (err, response, body) {
     console.log(err);
   }
   const responseBody = JSON.parse(body);
-  console.log((responseBody.films).length);
+  // Isolate results section to get movies
+  const results = responseBody.results;
+  for (const movie of results) {
+    const characters = movie.characters;
+    // Check each character item
+    for (const person of characters) {
+      if (person.includes(actorId)) {
+        count++;
+      }
+    }
+  }
+
+  console.log(count);
 });
