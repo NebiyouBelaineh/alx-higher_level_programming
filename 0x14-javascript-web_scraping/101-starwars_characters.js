@@ -12,15 +12,18 @@ request(reqUrl, function (err, response, body) {
   }
   const responseBody = JSON.parse(body);
   const characters = responseBody.characters;
-  // Make a request for each chatacter to get their name
-  characters.forEach(function (element) {
-    request(element, function (err, response, body) {
-      if (err) {
-        console.log(err);
-      }
-      const resJson = JSON.parse(body);
-      const name = resJson.name;
-      console.log(name);
+  // Make a request for each chatacter to get their name in an asynchronous way
+  characters.forEach(async function (element) {
+    await new Promise(function (resolve, reject) {
+      request(element, function (err, response, body) {
+        if (err) {
+          reject(err);
+        }
+        const resJson = JSON.parse(body);
+        const name = resJson.name;
+        console.log(name);
+        resolve();
+      });
     });
   });
 });
